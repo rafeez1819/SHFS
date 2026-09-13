@@ -1,0 +1,13 @@
+{
+  "name": "shfs-preservation-fabric",
+  "version": "1.0.0-foundation",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=20"},
+  "scripts": {
+    "start": "node services/shfs-service/index.mjs",
+    "service": "node services/shfs-service/index.mjs",
+    "health": "node scripts/health-check.mjs"
+  },
+  "config": {"port": "6868"}
+}

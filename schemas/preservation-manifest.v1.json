@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sherin.tech/schemas/shfs/preservation-manifest.v1.json",
+  "title": "SHFS Preservation Manifest v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol", "preservation_id", "event_id", "device_id", "policy", "package_cid", "merkle_root", "created_at", "state"],
+  "properties": {
+    "protocol": {"const": "shfs-preservation-v1"},
+    "preservation_id": {"type": "string", "minLength": 1},
+    "event_id": {"type": "string", "minLength": 1},
+    "device_id": {"type": "string", "minLength": 1},
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version", "decision"],
+      "properties": {
+        "id": {"type": "string"},
+        "version": {"type": "string"},
+        "decision": {"enum": ["WATCH", "PRESERVE"]}
+      }
+    },
+    "package_cid": {"type": "string", "minLength": 1},
+    "merkle_root": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "state": {"enum": ["SEALED", "AIRGAP_PENDING", "VERIFIED", "DNA_PENDING", "ARCHIVED"]}
+  }
+}
